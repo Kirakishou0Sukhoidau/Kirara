@@ -143,11 +143,11 @@ AnHien.addEventListener("click", function() {
 
 function updateBackground() {
   if (window.innerWidth >= 1024) {
-    body.style.backgroundImage = "url(../image/bg2nmp2.webp)";
+    body.style.backgroundImage = "url(image/bg2nmp2.webp)";
   } else if (screen.width >= 740) {
-    body.style.backgroundImage = "url(../image/bg2nmp2.webp)";
+    body.style.backgroundImage = "url(image/bg2nmp2.webp)";
   } else if (screen.width < 740) {
-    body.style.backgroundImage = "url(../image/img-HinaHdt.webp)";
+    body.style.backgroundImage = "url(image/img-HinaHdt.webp)";
   } else {
     body.style.backgroundColor = "black";
   }
@@ -160,7 +160,7 @@ function updateBackground() {
 AnHien.addEventListener("click", function() {
   if (isHidden) {
     // Hiển thị background image
-    body.style.backgroundImage = "url(../image/fairy1.webp)";
+    body.style.backgroundImage = "url(image/fairy1.webp)";
       load.style.display = "none";
       loadi.style.display = "none";
       lood.style.display = "none";
@@ -439,7 +439,7 @@ switchButton.addEventListener('click', () => {
   tripleClickTimeout = setTimeout(() => {
     if (tripleClickCount === 3) {
       if (iframe.src === 'https://video.twimg.com/ext_tw_video/1793746588835151872/pu/vid/avc1/480x600/A5uk5GX1yeCzXXgA.mp4?tag=12') {
-        iframe.src = '../hside/hside.html';
+        iframe.src = 'hside/hside.html';
       } else {
         iframe.src = 'https://video.twimg.com/ext_tw_video/1793746588835151872/pu/vid/avc1/480x600/A5uk5GX1yeCzXXgA.mp4?tag=12';
       }
