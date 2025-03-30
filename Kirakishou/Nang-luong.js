@@ -627,7 +627,7 @@ modalBg.addEventListener('click', () => {
 
 // 📂 mediaGithub
 let repoOwner = "Kirakishou0sukhoidau"; // Tên GitHub của quý cô
-let repoName = "kirakishou0sukhoidau.github.io";  // Tên repository
+let repoName = "Kirara";  // Tên repository
 
 let contentContainer = document.getElementById("trinh-xem");
 
@@ -728,7 +728,7 @@ async function fetchAllCommitsGithub(owner, repo) {
 
 async function loadGitHubCommitsLog() {
     const owner = "Kirakishou0sukhoidau"; // GitHub username
-    const repo = "kirakishou0sukhoidau.github.io"; // Tên repository
+    const repo = "Kirara"; // Tên repository
     const logList = document.getElementById("log-list");
     const authorFilter = document.getElementById("authorFilter");
 
