@@ -1,6 +1,6 @@
     .trail {
             position: fixed;
-            background-image: url('../image/fairy.webp');
+            background-image: url('image/fairy.webp');
             background-size: cover;
             z-index: 10;
             pointer-events: none;
@@ -902,7 +902,8 @@ font-weight: bold;
     width: 3.125em;
 }
  
-  .ul-bq {background-image: url('../image/fairy1.webp');
+  .ul-bq {
+      background-image: url('image/fairy1.webp');
     background-repeat: no repeat;
     background-size: 100% 100%;
               padding: 0.625em;
