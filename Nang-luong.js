@@ -626,8 +626,8 @@ modalBg.addEventListener('click', () => {
 //media
 
 // 📂 mediaGithub
-let repoOwner = ""; // Tên GitHub của quý cô
-let repoName = "";  // Tên repository
+let repoOwner = "Kirakishou0sukhoidau"; // Tên GitHub của quý cô
+let repoName = "Kirara";  // Tên repository
 let maxemmediaGit = "";  // Token GitHub nếu có (dùng môi trường)
 
 let contentContainer = document.getElementById("trinh-xem");
