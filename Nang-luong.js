@@ -626,7 +626,7 @@ modalBg.addEventListener('click', () => {
 //media
 
 // 📂 mediaGithub
-let repoOwner = "Kirakishou0sukhoidau"; // Tên GitHub của quý cô
+let repoOwner = "Kirakishou0Sukhoidau"; // Tên GitHub của quý cô
 let repoName = "Kirara";  // Tên repository
 let maxemmediaGit = "";  // Token GitHub nếu có (dùng môi trường)
 
@@ -677,24 +677,70 @@ async function fetchContentGithub() {
                 linkGithub.target = "_blank";
                 linkGithub.title = file.path;
 
+                // Hiển thị ảnh với tên bên dưới
                 if (fileTypeGithub === "imageGithub") {
                     let imgGithub = document.createElement("img");
                     imgGithub.src = fileUrl;
                     imgGithub.title = file.path;
+
+                    imgGithub.onload = function () {
+                        if (imgGithub.naturalWidth > imgGithub.naturalHeight) {
+                            imgGithub.classList.add("landscape");
+                        } else {
+                            imgGithub.classList.add("portrait");
+                        }
+                    };
+
+                    let imageLabel = document.createElement("p");
+                    imageLabel.textContent = file.path;
+                    imageLabel.style.textAlign = "center";
+                    imageLabel.style.fontStyle = "italic";
+
                     linkGithub.appendChild(imgGithub);
-                } else if (fileTypeGithub === "videoGithub") {
+                    linkGithub.appendChild(imageLabel);
+                }
+
+                // Hiển thị video với tên bên dưới
+                else if (fileTypeGithub === "videoGithub") {
                     let videoGithub = document.createElement("video");
                     videoGithub.src = fileUrl;
                     videoGithub.controls = true;
                     videoGithub.title = file.path;
+
+                    videoGithub.addEventListener("loadedmetadata", function () {
+                        if (videoGithub.videoWidth > videoGithub.videoHeight) {
+                            videoGithub.classList.add("landscape");
+                        } else {
+                            videoGithub.classList.add("portrait");
+                        }
+                    });
+
+                    let videoLabel = document.createElement("p");
+                    videoLabel.textContent = file.path;
+                    videoLabel.style.textAlign = "center";
+                    videoLabel.style.fontStyle = "italic";
+
                     linkGithub.appendChild(videoGithub);
-                } else if (fileTypeGithub === "audioGithub") {
+                    linkGithub.appendChild(videoLabel);
+                }
+
+                // Hiển thị audio với tên bên trên
+                else if (fileTypeGithub === "audioGithub") {
+                    let audioLabel = document.createElement("p");
+                    audioLabel.textContent = file.path;
+                    audioLabel.style.fontWeight = "bold";
+
                     let audioGithub = document.createElement("audio");
                     audioGithub.src = fileUrl;
                     audioGithub.controls = true;
                     audioGithub.title = file.path;
+
+                    linkGithub.appendChild(audioLabel);
                     linkGithub.appendChild(audioGithub);
-                } else if (fileTypeGithub === "textGithub") {
+                }
+
+                // Hiển thị văn bản
+                else if (fileTypeGithub === "textGithub") {
                     let textGithub = document.createElement("p");
                     textGithub.textContent = file.path;
                     linkGithub.appendChild(textGithub);
