@@ -626,11 +626,16 @@ modalBg.addEventListener('click', () => {
 //media
 
 // 📂 mediaGithub
-let repoOwner = "Kirakishou0sukhoidau"; // Tên GitHub của quý cô
-let repoName = "Kirara";  // Tên repository
-let maxemmediaGit = "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";  // Token GitHub nếu có
+let repoOwner = ""; // Tên GitHub của quý cô
+let repoName = "";  // Tên repository
+let maxemmediaGit = "";  // Token GitHub nếu có (dùng môi trường)
 
 let contentContainer = document.getElementById("trinh-xem");
+
+// Đọc token từ môi trường nếu có
+if (typeof process !== 'undefined' && process.env.TOKEN_CHI_DOC_READ) {
+    maxemmediaGit = process.env.TOKEN_CHI_DOC_READ;
+}
 
 // Hàm lấy nội dung từ GitHub API
 async function fetchContentGithub() {
@@ -711,6 +716,8 @@ fetchContentGithub();
 document.querySelectorAll('input[name="type"]').forEach(radio => {
     radio.addEventListener("change", fetchContentGithub);
 });
+
+
 
 
 //ban-va
