@@ -628,6 +628,7 @@ modalBg.addEventListener('click', () => {
 // 📂 mediaGithub
 let repoOwner = "Kirakishou0sukhoidau"; // Tên GitHub của quý cô
 let repoName = "Kirara";  // Tên repository
+let maxemmediaGit = "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";  // Token GitHub nếu có
 
 let contentContainer = document.getElementById("trinh-xem");
 
@@ -639,14 +640,27 @@ async function fetchContentGithub() {
     let apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/git/trees/main?recursive=1`;
 
     try {
-        let response = await fetch(apiUrl);
+        let headers = {};
+        if (maxemmediaGit) {
+            headers = {
+                "Authorization": `Bearer ${maxemmediaGit}`
+            };
+        }
+
+        let response = await fetch(apiUrl, { headers });
+        if (!response.ok) throw new Error(`HTTP ${response.status} - ${response.statusText}`);
+
         let data = await response.json();
+        if (!data.tree) throw new Error("Không tìm thấy dữ liệu hoặc cấu trúc repository không hợp lệ.");
 
         data.tree.forEach(file => {
             let fileTypeGithub = "";
-            if (file.path.match(/\.(jpg|png|gif|jpeg|webp)$/)) fileTypeGithub = "imageGithub";
-            if (file.path.match(/\.(mp4|webm|ogg)$/)) fileTypeGithub = "videoGithub";
-            if (file.path.match(/\.(mp3|wav|ogg|m4a)$/)) fileTypeGithub = "audioGithub"; // Bổ sung kiểm tra audio
+
+            // Xác định loại tệp
+            if (file.path.match(/\.(jpg|png|gif|jpeg|webp|svg)$/)) fileTypeGithub = "imageGithub";
+            if (file.path.match(/\.(mp4|webm|ogg|mkv)$/)) fileTypeGithub = "videoGithub";
+            if (file.path.match(/\.(mp3|wav|ogg|m4a|flac)$/)) fileTypeGithub = "audioGithub";
+            if (file.path.match(/\.(txt|md|json|csv|html|js|css)$/)) fileTypeGithub = "textGithub"; // Hỗ trợ tệp văn bản
 
             // So sánh chính xác với hậu tố Github
             if (selectedType === "allGithub" || selectedType === fileTypeGithub) {
@@ -675,6 +689,10 @@ async function fetchContentGithub() {
                     audioGithub.controls = true;
                     audioGithub.title = file.path;
                     linkGithub.appendChild(audioGithub);
+                } else if (fileTypeGithub === "textGithub") {
+                    let textGithub = document.createElement("p");
+                    textGithub.textContent = file.path;
+                    linkGithub.appendChild(textGithub);
                 }
 
                 contentContainer.appendChild(linkGithub);
@@ -682,6 +700,7 @@ async function fetchContentGithub() {
         });
     } catch (error) {
         console.error("⚠️ Lỗi tải dữ liệu từ repository:", error);
+        contentContainer.innerHTML = `<p style="color: red;">Lỗi tải dữ liệu: ${error.message}</p>`;
     }
 }
 
@@ -692,7 +711,6 @@ fetchContentGithub();
 document.querySelectorAll('input[name="type"]').forEach(radio => {
     radio.addEventListener("change", fetchContentGithub);
 });
-
 
 
 //ban-va
