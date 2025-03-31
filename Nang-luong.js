@@ -646,7 +646,7 @@ async function fetchContentGithub() {
             let fileTypeGithub = "";
             if (file.path.match(/\.(jpg|png|gif|jpeg|webp)$/)) fileTypeGithub = "imageGithub";
             if (file.path.match(/\.(mp4|webm|ogg)$/)) fileTypeGithub = "videoGithub";
-            if (file.path.match(/\.(mp3|wav|ogg)$/)) fileTypeGithub = "audioGithub"; // Bổ sung kiểm tra audio
+            if (file.path.match(/\.(mp3|wav|ogg|m4a)$/)) fileTypeGithub = "audioGithub"; // Bổ sung kiểm tra audio
 
             // So sánh chính xác với hậu tố Github
             if (selectedType === "allGithub" || selectedType === fileTypeGithub) {
