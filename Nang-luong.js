@@ -693,6 +693,14 @@ async function fetchContentGithub() {
 
                     let imageLabel = document.createElement("p");
                     imageLabel.textContent = file.path;
+
+                    // Nếu ảnh có chiều dọc, giới hạn tên
+                    if (imgGithub.naturalHeight > imgGithub.naturalWidth) {
+                        imageLabel.style.maxWidth = "130px";
+                        imageLabel.style.overflow = "hidden";
+                        imageLabel.style.textOverflow = "ellipsis";
+                    }
+
                     imageLabel.style.textAlign = "center";
                     imageLabel.style.fontStyle = "italic";
 
@@ -717,6 +725,14 @@ async function fetchContentGithub() {
 
                     let videoLabel = document.createElement("p");
                     videoLabel.textContent = file.path;
+
+                    // Nếu video có chiều dọc, giới hạn tên
+                    if (videoGithub.videoHeight > videoGithub.videoWidth) {
+                        videoLabel.style.maxWidth = "130px";
+                        videoLabel.style.overflow = "hidden";
+                        videoLabel.style.textOverflow = "ellipsis";
+                    }
+
                     videoLabel.style.textAlign = "center";
                     videoLabel.style.fontStyle = "italic";
 
@@ -762,7 +778,6 @@ fetchContentGithub();
 document.querySelectorAll('input[name="type"]').forEach(radio => {
     radio.addEventListener("change", fetchContentGithub);
 });
-
 
 
 
