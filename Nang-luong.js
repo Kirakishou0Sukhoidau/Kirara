@@ -1059,7 +1059,27 @@ muiTenCheo.addEventListener('click', () => {
 
 
 //phat-don-le-1-video
-const videosssi = document.querySelectorAll('video');
+// Đảm bảo mã chỉ chạy khi DOM đã được tải hoàn toàn
+document.addEventListener('DOMContentLoaded', () => {
+    const videosssi = document.querySelectorAll('video');
+    
+    // Lắng nghe sự kiện 'play' cho từng video
+    for (const video of videosssi) {
+        video.addEventListener('play', () => {
+            // Dừng tất cả các video khác khi một video được phát
+            for (const otherVideo of videosssi) {
+                if (otherVideo !== video) {
+                    otherVideo.pause();
+                }
+            }
+        });
+    }
+});
+
+
+
+
+/*const videosssi = document.querySelectorAll('video');
 
 
 for (const video of videosssi) {
@@ -1071,3 +1091,4 @@ for (const video of videosssi) {
     }
   });
 }
+*/
