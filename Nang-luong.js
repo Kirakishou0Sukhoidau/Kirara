@@ -1061,20 +1061,36 @@ muiTenCheo.addEventListener('click', () => {
 //phat-don-le-1-video
 // Đảm bảo mã chỉ chạy khi DOM đã được tải hoàn toàn
 document.addEventListener('DOMContentLoaded', () => {
-    const videosssi = document.querySelectorAll('video');
-    
-    // Lắng nghe sự kiện 'play' cho từng video
-    for (const video of videosssi) {
-        video.addEventListener('play', () => {
-            // Dừng tất cả các video khác khi một video được phát
-            for (const otherVideo of videosssi) {
-                if (otherVideo !== video) {
-                    otherVideo.pause();
+    const contentContainer = document.getElementById("trinh-xem");
+
+    // Lắng nghe sự kiện 'play' cho các video đã có trong DOM
+    function setupVideoEventListeners() {
+        const videosssi = document.querySelectorAll('#trinh-xem video');
+        
+        // Lắng nghe sự kiện 'play' cho từng video
+        for (const video of videosssi) {
+            video.addEventListener('play', () => {
+                // Dừng tất cả các video khác khi một video được phát
+                for (const otherVideo of videosssi) {
+                    if (otherVideo !== video) {
+                        otherVideo.pause();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
+
+    // Thiết lập các sự kiện khi DOM đã tải
+    setupVideoEventListeners();
+
+    // Nếu video được thêm động vào #trinh-xem, thêm lại lắng nghe sự kiện
+    const observer = new MutationObserver(() => {
+        setupVideoEventListeners();
+    });
+
+    observer.observe(contentContainer, { childList: true, subtree: true });
 });
+
 
 
 
