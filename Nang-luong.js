@@ -1065,7 +1065,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Lắng nghe sự kiện 'play' cho các video đã có trong DOM
     function setupVideoEventListeners() {
-        const videosssi = document.querySelectorAll('#trinh-xem video');
+        const videosssi = document.querySelectorAll('#trinh-xem video, #trinh-xem audio');
         
         // Lắng nghe sự kiện 'play' cho từng video
         for (const video of videosssi) {
