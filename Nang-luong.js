@@ -719,7 +719,7 @@ async function fetchContentGithub() {
             if (file.path.match(/\.(txt|md|json|csv|html|js|css)$/)) fileTypeGithub = "textGithub";
 
             if (selectedType === "allGithub" || selectedType === fileTypeGithub) {
-                let fileUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/${file.path}`;
+                let fileUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/Kirara/${file.path}`;
                 let linkGithub = document.createElement("a");
                 linkGithub.href = fileUrl;
                 linkGithub.target = "_blank";
