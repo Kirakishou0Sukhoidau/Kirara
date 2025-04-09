@@ -1,0 +1,190 @@
+html {position: relative;
+      position: center center;
+      max-width: 960px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      flex-basis: auto;
+      user-select: none;
+}
+body {background: black;
+   /*display: none; */
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: top center;
+      font-family: Arial;
+      font-size: 1em;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      
+ }
+  
+  img {width: 100%;
+    border: 1px solid black;
+  }
+h1 {
+  color: rebeccapurple;
+  text-align: center;
+  
+}
+.flex-x-s {display: flex;
+  overflow-x: scroll;
+  
+}
+
+
+video, figure img {border: 1px solid black;
+  
+}
+
+
+
+
+
+.video h6 {text-align: left;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+
+.video {
+  text-align: center;
+  
+}
+.video p {text-align: left;}
+
+.anh-p {
+  width: 100%;
+  height: 90vh;
+  overflow-x: scroll;
+  display: flex;  /* Ensure container fills the screen width */
+}
+
+.anh-p figure {
+  /* Set flexbox properties for spacing (optional) */
+  display: flex;
+  /* Prevent figure elements from shrinking */
+   /* Optional spacing between videos */
+}
+
+
+.im {width: 100vw;
+  
+}
+
+.video-p {
+  width: 100%;
+  height: 90vh;
+  overflow-x: scroll;
+  display: flex;
+}
+
+.video-p figure {
+  /* Set flexbox properties for spacing (optional) */
+   display: flex;
+  /* Prevent figure elements from shrinking */
+   /* Optional spacing between videos */
+}
+
+
+.vo {width: 100vw;
+  height: 90vh;
+  
+}
+
+.thidden {display: block;
+}
+figure {position: relative;
+  
+}
+
+figure figcaption {
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  color: #666;
+  text-align: center;
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+}
+
+#hien-bg {
+  height: 100vh;
+  
+}
+
+#hien-bg .slideshow-container {
+  width: 100%;
+  height: 100vh;
+  border: 1px solid #ccc;
+}
+
+ .slideshow-main-image img{
+  width: 100%;
+  height: 80vh;
+}
+
+ .slideshow-main-image video{
+  width: 100%;
+  height: 80vh;
+}
+
+
+
+
+
+  .ul-bq {background-color: rgb(230, 230, 250);
+              
+    overflow: hidden;
+          /*    pointer-events: none;*/
+              border: 1px solid aqua;
+              list-style: none;
+              text-align: left;
+}
+
+
+.slideshow-thumbnails {
+  width: 100%;
+  flex: 1;
+  height: 20vh;
+  border-top: 1px solid #ccc;
+  
+  display: flex;
+  overflow-x: scroll;
+}
+
+.slideshow-thumbnails img {
+  width: 100%;
+  height: 20vh;
+  border: 1px solid #ddd;
+}
+
+
+.slideshow-thumbnails video {
+  border: 2px dashed green;
+}
+
+/*.slideshow-controls {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}*/
+#prev-button {top: 50vh;
+  left: 5px;
+}
+
+
+#next-button {top: 50vh;
+  right: 5px;
+}
+
+
+.slideshow-controls button {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  position: absolute;
+}
