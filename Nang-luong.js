@@ -697,7 +697,7 @@ async function fetchContentGithub() {
     let selectedType = document.querySelector('input[name="type"]:checked').value + "Github";
     localStorage.setItem("selectedTypeGithub", selectedType); // Lưu loại media đã chọn
 
-    let apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/git/trees/main?recursive=1`;
+    let apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/git/trees/Kirara?recursive=1`;
 
     try {
         let headers = {
