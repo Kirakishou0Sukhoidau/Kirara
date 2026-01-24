@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./reset.css">
+<link rel="preload" as="fetch" href="./assets/cache/Sb2H.bin">
+
+  <title>404 — Không tìm thấy trang</title>
+  <style>
+ 
+    /* Toàn trang với nền ảnh  màu hồng */
+    body {
+      pointer-events: none;
+      user-select: none;
+      margin: 0;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: sans-serif;
+     /* background: url("./image/background/") no-repeat center fixed; */
+      background-size: auto 100%;
+      background-color: purple;
+      text-align: center;
+      padding: 20px;
+      margin: 30px;
+    }
+  
+
+
+
+.error-text {
+  text-align: center;
+  color: #ccc;
+  font-size: 1.2rem;
+}
+
+  
+  /*
+    h1 {
+      font-size: 64px;
+      margin: 10px 0;
+      color: #e91e63;
+      background: rgba(255, 255, 255, 0.5);
+    }
+  */
+  
+  
+  /* CSS cho hiệu ứng ánh sáng neon */
+.error-code {
+  font-size: 4em;
+  font-weight: bold;
+  color: pink;
+  text-shadow: 
+    0 0 5px #ff0066,
+    0 0 10px #ff3399,
+    0 0 20px #ff66cc,
+    0 0 40px #ff99cc;
+  animation: flicker 1.5s linear infinite alternate;
+  text-align: center;
+}
+
+@keyframes flicker {
+  0%   { opacity: 1; text-shadow: 0 0 5px #ff0066, 0 0 10px #ff3399, 0 0 20px #ff66cc, 0 0 40px #ff99cc; }
+  50%  { opacity: 0.7; text-shadow: 0 0 2px #ff0066, 0 0 5px #ff3399; }
+  100% { opacity: 1; text-shadow: 0 0 10px #ff0066, 0 0 20px #ff3399, 0 0 40px #ff66cc, 0 0 60px #ff99cc; }
+}
+
+  
+  
+    
+    #content404 p {
+    /*  background: rgba(0, 0, 0, 0.5); */
+     /* -webkit-text-stroke: 0.5px yellow; */
+      font-size: 15px;
+      color: yellow;
+      margin: 10px 0;
+      word-break: break-word;
+    }
+  
+  #content404 img {
+    height: 50vh;
+  }
+  
+    a {
+      display: block;
+      margin-top: 12px;
+      padding: 10px 20px;
+      background-color: violet;
+      color: #fff;
+      pointer-events: auto;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  
+    a:hover {
+      background: #ad1457;
+    }
+  
+  </style>
+</head>
+<body>
+  
+  <div id="content404">
+   <h1 class="error-code">404</h1>
+  <p>Không tìm thấy trang</p>
+    <img src="./assets/cache/Sb2H.bin">
+  <a href="/">Về trang chủ</a>
+  </div>
+
+  <script>
+    // Cho phép nhấn phím H để quay lại trang chủ
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "h" || e.key === "H") {
+        window.location.href = "/";
+      }
+    });
+  </script>
+</body>
+</html>

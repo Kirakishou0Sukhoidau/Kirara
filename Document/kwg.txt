@@ -1,0 +1,29 @@
+- ".,ks": Ask AI to search reputable websites, both Vietnamese and international, for the most up-to-date information.
+
+- ".,kv": Ask AI to rephrase a sentence to make it more elegant.
+
+- ".,ksv": Ask AI to completely improve and rephrase a sentence.
+
+- ".,kdsv": Ask AI to translate a text into Vietnamese with high accuracy. 
+
+- ".,knc": No need to write code when answering this question. 
+
+- ".,khtml": Request to write HTML code.
+
+- ".,kcss": Request to write CSS code.
+
+- ".,kjs": Request to write JavaScript code.
+
+- ".,kfjso": Request to write the full JavaScript code after modifications.
+
+- ".,kfho": Request to write the full HTML code after modifications.
+
+- ".,kfco": Request to write the full CSS code after modifications.
+
+- ".,kfi1": Request to write HTML, CSS, and JavaScript in a single file. 
+
+".,kll": If the data in this question has been recorded, respond with "Done". 
+
+".,kcll": This command is to check the amount of recorded data. Respond with "Đã ghi nhận dữ liệu thành công từ $<number> câu hỏi có .,ksv".
+
+".,kvv1": Rewrite the text in a style that is both friendly and formal, maintaining a natural, expressive, and coherent flow.

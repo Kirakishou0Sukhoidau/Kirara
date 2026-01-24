@@ -1,0 +1,327 @@
+/*PHẦN TÌM ẢNH*/
+/* Form bao ngoài */
+#tim-anh-r34 {
+  width: 100%;
+  display: flex;
+  align-items: center;     /* Căn giữa theo chiều dọc */
+  justify-content: flex-start; /* Căn từ trái sang phải */
+  gap: 10px;               /* Khoảng cách giữa các phần tử */
+  flex-wrap: nowrap;       /* Không xuống hàng */
+  margin: 10px 0;
+}
+
+/* Input */
+#tim-anh-r34 input[type="text"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+#tim-anh-r34 input[type="text"]:focus {
+  border-color: #4a90e2;   /* Đổi màu khi focus */
+  outline: none;
+}
+
+/* Nút bấm */
+#tim-anh-r34 button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4a90e2, #357ABD);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  
+  
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+#tim-anh-r34 input, #tim-anh-r34 button {
+    flex: 1;         /* Chia đều khoảng rộng */
+  min-width: 0;    /* Tránh bị tràn khi có chữ dài */
+  box-sizing: border-box;
+}
+
+#tim-anh-r34 button:hover {
+  background: linear-gradient(135deg, #5aa0f2, #468ad8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+#tim-anh-r34 button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.pul-bq {color: black;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.video-preview {
+    border: 2px solid blue; /* Viền xanh cho video hoặc ảnh động */
+    cursor: pointer;
+}
+
+.ai-preview {
+    border: 2px solid gold; /* Viền vàng cho ảnh AI */
+    cursor: pointer;
+}
+
+.gif-preview {
+    border: 2px solid green; /* Viền hồng cho ảnh bình thường */
+    cursor: pointer;
+}
+
+.img-preview {
+    border: 2px solid pink; /* Viền hồng cho ảnh bình thường */
+    cursor: pointer;
+}
+
+#khu-xem-anh {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 cột */
+    grid-template-rows: repeat(5, auto);  /* 5 hàng */
+    gap: 10px; /* Khoảng cách giữa các ảnh */
+}
+
+#khu-xem-anh img {
+    width: 100%; /* Làm cho ảnh tự động vừa với ô chứa */
+    max-width: 100%; /* Giới hạn chiều rộng ảnh */
+    height: auto; /* Giữ tỷ lệ chiều cao của ảnh */
+}
+
+        /* CSS cho danh sách gợi ý */
+        #suggestions {
+            border: 1px solid black;
+            max-height: 150px;
+            overflow-y: auto;
+            position: absolute;
+            background-color: white;
+            z-index: 3;
+          display: none;
+        }
+
+        #suggestions div {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+#select-page {
+    width: 3.125em;
+}
+ 
+  .ul-bq {
+     background-image: url('/storage/emulated/0/Download/Victorique.de.Blois.full.551392.jpg'); 
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+              padding: 0.625em;
+              bottom: 1%;
+              height: 98%;
+              width: 100%;
+          /*    pointer-events: none;*/
+              border: 1px solid aqua;
+              position: fixed;
+              list-style: none;
+              text-align: left;
+              overflow-y: scroll;
+              z-index: 2;       
+}
+
+
+#bqk {  
+  position: static;
+        width: 100%;
+        margin: 0 auto;
+  bottom: 10px;
+        text-align: center;
+        z-index: 0;
+}
+ 
+ #bqk a{pointer-events: auto;}
+
+
+
+
+/*PHẦN ĐIỀU HƯỚNG TRANG*/
+#nut-ngan-phu {
+  display: flex;
+  align-items: center;          /* Căn giữa theo chiều dọc */
+  justify-content: space-evenly; /* Cách đều các phần tử theo trục X */
+  width: 100%;                  /* Chiếm hết chiều ngang để dàn đều */
+  gap: 10px;                    /* Khoảng cách tối thiểu giữa các phần tử */
+}
+
+#nut-ngan-phu #select-page {
+  width: 100px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#nut-ngan-phu button {
+  padding: 6px 12px;
+  border: none;
+  background: #f3f3f3;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.3s;
+}
+
+#nut-ngan-phu button:hover {
+  background: #e0e0e0;
+}
+
+/* Huong dan ve trang*/
+#huong-dan-ve-trang {
+  margin: 0 auto;
+  position: absolute;
+  z-index: 2;
+}
+
+#huong-dan-ve-trang input {
+  text-align: center;
+  border: none;
+  font-size: 1.625em;
+  height: 1.625em;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+#huong-dan-ve-trang input::placeholder {
+    color: white;      /* Chọn màu sắc nàng muốn, ví dụ màu trắng tinh khôi */
+    opacity: 1;
+}
+
+#huong-dan-ve-trang a {
+  pointer-events: auto;
+  user-select: auto;
+}
+
+
+#huong-dan-ve-trang summary, #huong-dan-ve-trang details {
+  padding: 0.3125em;
+}
+
+#huong-dan-ve-trang div {
+  margin: 5px;
+}
+
+#huong-dan-ve-trang summary {
+        list-style: none; /* Ẩn dấu mũi tên trên Chrome/Firefox */
+        cursor: pointer;
+        font-weight: bold;
+        color: whitesmoke;
+        display: flex;
+        align-items: center;
+  background-color: #010B13;
+      }
+
+#huong-dan-ve-trang details {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #f1f1f1;
+  backdrop-filter: blur(10px); background: rgba(0, 0, 0, 0.9);
+}
+
+#huong-dan-lay-api summary::-webkit-details-marker {
+        display: none;
+    }
+
+#huong-dan-ve-trang summary::before {
+            content: '💎';
+            margin-right: 10px;
+            transition: transform 0.3s;
+        }
+
+#huong-dan-ve-trang details[open] summary::before {
+        content: "✨ "; /* Nàng thậm chí có thể đổi thành ngôi sao khi mở ra */
+        transform: rotate(180deg);
+    }
+
+#huong-dan-ve-trang img {
+  border: none;
+}
+
+
+/* Lay API */
+/* Lọc sạch các tham số dư thừa, chỉ gọi qua ID và thẻ con */
+
+#huong-dan-lay-api details {
+    
+}
+
+#huong-dan-lay-api summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#huong-dan-lay-api p {
+    line-height: 1.6;
+}
+
+#huong-dan-lay-api strong {
+    font-weight: bold;
+}
+
+#huong-dan-lay-api a {
+    color: violet;
+}
+
+#huong-dan-lay-api img {
+    filter: brightness(0) invert(1);
+    vertical-align: middle;
+}
+
+#huong-dan-lay-api b {
+    vertical-align: middle;
+}
+
+/*Danh sách DNS*/
+/* Định dạng khung chứa chính */
+#danh-sach-dns .dns-container {
+        color: #e0e0e0;
+    background-color: #121212;
+  
+}
+
+
+
+/* Từng mục DNS */
+#danh-sach-dns .dns-item {
+    margin-top: 20px;
+}
+
+/* Tên nhà cung cấp DNS */
+#danh-sach-dns .dns-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #bb86fc;
+}
+
+/* Khối chi tiết bên trong */
+#danh-sach-dns .dns-details {
+        margin-top: 10px;
+}
+
+/* Danh sách IPv4/v6/Link */
+#danh-sach-dns .dns-list {
+    list-style-type: none; /* Loại bỏ các dấu chấm (bullets) */
+    padding-left: 0;       /* Loại bỏ khoảng trống mặc định của danh sách */
+    margin-bottom: 10px;
+  pointer-events: auto;
+  user-select: auto;
+}
+
+/* Chú thích phía dưới */
+#danh-sach-dns .dns-note {
+    font-style: italic;
+    color: #03dac6;
+}

@@ -1,0 +1,209 @@
+<!--
+Yande.re Gallery Viewer
+Single-file HTML with separated HTML, CSS and JS sections.
+Instructions: Open this file in a browser. If direct requests to yande.re/post.json are blocked by CORS, set a proxy by editing `PROXY_URL` in the JS section (see comments).
+Created for: Kirakishou (tiểu thư)
+-->
+
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yande.re Gallery — Tiểu thư private viewer</title>
+  <!-- ========================= CSS ========================= -->
+  <style>
+    /* ===== Layout & reset ===== */
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#94a3b8;--accent:#7c3aed}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:#e6eef8;background:linear-gradient(180deg,var(--bg),#071026);}
+    a{color:inherit}
+
+    /* ===== Header ===== */
+    header{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:14px 18px;background:rgba(255,255,255,0.01);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
+    .title{font-size:16px;font-weight:700}
+    .subtitle{font-size:12px;color:var(--muted)}
+
+    /* ===== Controls ===== */
+    .controls{display:flex;gap:8px;align-items:center}
+    input[type=text]{padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:inherit;min-width:260px}
+    select,button{padding:8px 10px;border-radius:8px;border:none;background:rgba(255,255,255,0.03);color:inherit}
+    button:hover{cursor:pointer;opacity:0.95}
+
+    /* ===== Gallery ===== */
+    main{padding:16px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.01), rgba(255,255,255,0.015));border-radius:10px;padding:6px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column}
+    .thumb{width:100%;aspect-ratio:1/1.1;object-fit:cover;border-radius:6px;background:#031327}
+    .meta{padding:8px 6px;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:6px}
+    .taglist{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+    /* ===== Modal ===== */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.7);z-index:70}
+    .modal.show{display:flex}
+    .modal-content{max-width:90vw;max-height:90vh;background:var(--card);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);display:flex;gap:12px}
+    .modal-img{max-height:80vh;max-width:80vw;object-fit:contain}
+    .modal-side{width:320px;max-height:80vh;overflow:auto;padding:8px}
+    .small{font-size:12px;color:var(--muted)}
+
+    /* ===== Footer / status ===== */
+    .status{padding:10px 16px;color:var(--muted);font-size:13px}
+
+    /* responsive tweaks */
+    @media (max-width:700px){.controls{flex-direction:column;align-items:stretch}input[type=text]{min-width:100%} .modal-content{flex-direction:column-reverse;align-items:center}.modal-side{width:100%}}
+  </style>
+</head>
+<body>
+  <!-- ========================= HTML ========================= -->
+  <header>
+    <div class="brand">
+      <div class="logo">YR</div>
+      <div>
+        <div class="title">Yande.re Gallery</div>
+        <div class="subtitle">Tiểu thư xem thư viện — nhập tag và duyệt</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <input id="q" type="text" placeholder="Nhập tag (ví dụ: highres rating:safe)" value="rating:safe" />
+      <select id="limit">
+        <option value="20">20 hình</option>
+        <option value="40">40 hình</option>
+        <option value="80">80 hình</option>
+      </select>
+      <button id="search">Tìm</button>
+      <button id="more">Tải thêm</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="grid" class="grid" aria-live="polite"></div>
+    <div id="status" class="status">Sẵn sàng.</div>
+  </main>
+
+  <!-- Modal để xem ảnh lớn -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <img id="modalImg" class="modal-img" src="" alt="">
+      <div class="modal-side">
+        <div id="modalMeta" class="small"></div>
+        <div style="height:8px"></div>
+        <div><strong>Link gốc:</strong> <a id="sourceLink" href="#" target="_blank">Mở</a></div>
+        <div style="height:8px"></div>
+        <div><strong>Tags:</strong></div>
+        <div id="modalTags" class="small taglist"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================= JavaScript ========================= -->
+  <script>
+    /*
+      JS section
+      - Separated logic
+      - Uses yande.re Moebooru-style API: /post.json?tags=...
+      - NOTE: yande.re might block cross-origin requests (CORS). If fetch fails due to CORS, set PROXY_URL to a public CORS proxy (e.g. https://norproxy.example/) or run a simple proxy on your machine.
+      - Be careful when using public proxies; better to run a personal proxy.
+    */
+
+    // ===== Configuration =====
+    const API_BASE = 'https://api.allorigins.win/raw?url=https://yande.re/post.json';
+    // If direct fetch is blocked by CORS, set PROXY_URL to e.g. 'https://api.allorigins.win/raw?url=' or your own proxy that forwards requests.
+    let PROXY_URL = ''; // if needed e.g. 'https://api.allorigins.win/raw?url='
+
+    // ===== State =====
+    let page = 1; // yande.re's API is page-based (post.json?page=<n>&tags=...)
+    let limit = 20;
+    let currentTags = 'rating:safe';
+
+    // ===== DOM =====
+    const qInput = document.getElementById('q');
+    const limitSelect = document.getElementById('limit');
+    const searchBtn = document.getElementById('search');
+    const moreBtn = document.getElementById('more');
+    const grid = document.getElementById('grid');
+    const status = document.getElementById('status');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalTags = document.getElementById('modalTags');
+    const sourceLink = document.getElementById('sourceLink');
+
+    // ===== Helpers =====
+    function setStatus(txt){ status.textContent = txt }
+
+    function buildUrl(tags, page, limit){
+      const params = new URLSearchParams();
+      params.set('tags', tags);
+      params.set('page', page);
+      params.set('limit', limit);
+      return `${API_BASE}?${params.toString()}`;
+    }
+
+    async function fetchPosts(tags, pageNum=1, limitNum=20){
+      const url = buildUrl(tags,pageNum,limitNum);
+      const finalUrl = PROXY_URL ? (PROXY_URL + encodeURIComponent(url)) : url;
+      try{
+        setStatus('Đang tải...');
+        const res = await fetch(finalUrl, {headers:{'Accept':'application/json'}});
+        if(!res.ok) throw new Error('HTTP '+res.status);
+        const data = await res.json();
+        setStatus(`Đã tải ${data.length} ảnh (trang ${pageNum}).`);
+        return data;
+      }catch(err){
+        // Có thể bị CORS; hiển thị lỗi chi tiết cho người dùng debug
+        setStatus('Lỗi khi tải: '+err.message+" — nếu là lỗi CORS, bật PROXY_URL trong mã.");
+        console.error(err);
+        return [];
+      }
+    }
+
+    function makeCard(post){
+      const el = document.createElement('div'); el.className='card';
+      const img = document.createElement('img');
+      img.className='thumb';
+      // yande.re returns 'sample_url' and 'file_url' and 'preview_url' depending on API. Use 'sample_url' if present, fallback to preview_url.
+      img.src = post.preview_url || post.sample_url || post.file_url || '';
+      img.alt = post.tags || ('Post '+post.id);
+      img.loading = 'lazy';
+      img.addEventListener('click', ()=>openModal(post));
+      el.appendChild(img);
+      const meta = document.createElement('div'); meta.className='meta';
+      const id = document.createElement('div'); id.textContent = '#'+post.id; id.className='small';
+      const rating = document.createElement('div'); rating.textContent = post.rating || ''; rating.className='small';
+      meta.appendChild(id); meta.appendChild(rating);
+      el.appendChild(meta);
+      return el;
+    }
+
+    // ===== Modal logic =====
+    function openModal(post){
+      modalImg.src = post.file_url || post.sample_url || post.preview_url || '';
+      modalMeta.innerHTML = `<div><strong>ID:</strong> ${post.id}</div><div><strong>Score:</strong> ${post.score || 0}</div>`;
+      modalTags.textContent = post.tags;
+      sourceLink.href = post.source || post.file_url || '#';
+      modal.classList.add('show');
+    }
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.classList.remove('show'); });
+
+    // ===== Main actions =====
+    async function doSearch(reset=true){
+      if(reset){ page=1; grid.innerHTML=''; }
+      currentTags = qInput.value.trim() || 'rating:safe';
+      limit = parseInt(limitSelect.value,10) || 20;
+      const posts = await fetchPosts(currentTags,page,limit);
+      if(posts.length===0 && page===1){ setStatus('Không tìm thấy ảnh hợp lệ. Thử tag khác.'); }
+      posts.forEach(p=> grid.appendChild(makeCard(p)));
+    }
+
+    searchBtn.addEventListener('click', ()=>doSearch(true));
+    moreBtn.addEventListener('click', async ()=>{ page++; const posts = await fetchPosts(currentTags,page,limit); posts.forEach(p=> grid.appendChild(makeCard(p))); });
+
+    // init
+    (function(){ setStatus('Sẵn sàng.'); doSearch(true); })();
+
+  </script>
+</body>
+</html>

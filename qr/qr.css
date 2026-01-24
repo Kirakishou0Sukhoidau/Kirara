@@ -1,0 +1,142 @@
+/*quet-qr*/
+       #quet-qr h1 {
+            font-size: 24px;
+            color: #5f6368;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+       #quet-qr button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+       #quet-qr button:hover {
+            background-color: #45a049;
+        }
+       #quet-qr #camera-container {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            text-align: center;
+        }
+       #quet-qr #camera-container video {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+        }
+       #quet-qr input[type="file"] {
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+            color: #333;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+       #quet-qr input[type="file"]:hover {
+            border-color: #4CAF50;
+        }
+       #quet-qr #ketqua-giai-ma-qr {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7f5e7;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            display: none; /* Ẩn ban đầu */
+        }
+       #quet-qr #preview-qr {
+            margin-top: 20px;
+            text-align: center;
+            display: none; /* Ẩn ban đầu */
+        }
+       #quet-qr #preview-qr img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+/*tao-qr*/
+#vung-qr {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #eee;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+ #tao-qr h1 {
+font-size: 24px;
+text-align: center;
+margin-bottom: 10px;
+  color: #ffcbcb;
+  text-shadow: 1px 1px 5px #000;
+}
+
+ #tao-qr #qrText, #tao-qr button {
+  padding: 12px 16px;
+  margin: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+ #tao-qr #qrText {
+  width: 90%;
+      height: 30vh;
+  max-width: 400px;
+  background: #2e2e48;
+  color: #fff;
+  border: 1px solid #5e60ce;
+}
+
+ #tao-qr input::placeholder {
+  color: #bbb;
+}
+
+ #tao-qr button {
+  background-color: #5e60ce;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(94, 96, 206, 0.3);
+}
+
+ #tao-qr button:hover {
+  background-color: #7b78ff;
+  transform: scale(1.05);
+}
+
+ #tao-qr #qr-container {
+  margin-top: 30px;
+  padding: 20px;
+  background: #222244;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  display: inline-block;
+}
+
+ #tao-qr #qr-container canvas, #tao-qr 
+#qr-container svg {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: auto;
+  display: block;
+}

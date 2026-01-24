@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./qr.css">
+ <script src="https://unpkg.com/html5-qrcode"></script>
+    <title>Quét QR Code</title>
+    <style>
+    
+    /* CSS Reset đơn giản cho toàn bộ phần tử */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+    </style>
+</head>
+<body>
+  
+  <div id="vung-qr">
+
+  <div id="quet-qr">
+    <h1>Quét mã QR</h1>
+<label style="color: purple; font-weight: bold;">
+    <input type="checkbox" id="quetQR_Sandbox" checked> Tắt thực thi QR (Chế độ an toàn)
+</label>
+    <br>
+    
+    <!-- Nút bật/tắt camera -->
+    <button id="toggle-camera">Bật Camera</button>
+    <div id="camera-container">
+        <video id="camera" width="100%" height="auto" autoplay></video>
+    </div>
+
+    <!-- Input tải ảnh lên -->
+    <input type="file" id="file-input" accept="image/*" />
+
+    <!-- Kết quả giải mã -->
+    <div id="ketqua-giai-ma-qr"></div>
+
+    <!-- Hiển thị ảnh được vẽ lên canvas -->
+    <div id="preview-qr"></div>
+
+  </div>
+  <br>
+  <br>
+    <div id="tao-qr">
+  <h1>Tạo mã QR</h1>
+  <textarea id="qrText"></textarea>
+  <br>
+  <button onclick="generateQRTaoQR()">Tạo mã QR</button>
+  <button onclick="downloadPNGTaoQR()">Tải PNG (2000px)</button>
+  <button onclick="downloadSVGTaoQR()">Tải SVG</button>
+    <br>
+  <div id="qr-container"></div>
+
+  </div>
+    
+</div>
+
+     <!-- QR Code Styling Library -->
+  <script src="qr-code-styling.js"></script>
+  <script src="jsQR.js"></script>
+
+<script src="qr.js"></script>
+</body>
+</html>

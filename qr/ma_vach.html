@@ -1,0 +1,146 @@
+<!--
+  Web tạo mã vạch đơn giản với xuất PNG 2000px
+  - Sử dụng JsBarcode (CDN) để render SVG barcode
+  - Cho phép chọn định dạng, nhập dữ liệu, tuỳ chỉnh kích thước, ẩn/hiện text, và tải ảnh PNG 2000px
+  - Tác giả: ChatGPT
+-->
+
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trình tạo mã vạch 2000px</title>
+</head>
+<body>
+  <main class="container">
+    <h1>Trình tạo mã vạch</h1>
+
+    <section class="controls">
+      <label>Loại mã:
+        <select id="formatSelect">
+          <option value="CODE128">CODE128</option>
+          <option value="EAN13">EAN13</option>
+          <option value="EAN8">EAN8</option>
+          <option value="UPC">UPC</option>
+          <option value="CODE39">CODE39</option>
+          <option value="ITF">ITF</option>
+        </select>
+      </label>
+
+      <label>Nội dung:
+        <input id="textInput" placeholder="Nhập dữ liệu (ví dụ: 123456789012)" />
+      </label>
+
+      <label>Chiều rộng (px):
+        <input id="widthInput" type="number" value="2" min="1" />
+      </label>
+
+      <label>Chiều cao (px):
+        <input id="heightInput" type="number" value="100" min="10" />
+      </label>
+
+      <label>Hiện chữ dưới mã:
+        <input id="displayValue" type="checkbox" checked />
+      </label>
+
+      <div class="buttons">
+        <button id="generateBtn">Tạo mã</button>
+        <button id="downloadBtn">Tải PNG 2000px</button>
+        <button id="clearBtn">Xóa</button>
+      </div>
+    </section>
+
+    <section class="preview">
+      <svg id="barcode"></svg>
+      <canvas id="tmpCanvas" style="display:none;"></canvas>
+    </section>
+
+    <footer class="help">Lưu ý: một số định dạng (ví dụ EAN13) yêu cầu độ dài/kiểm tra checksum hợp lệ.</footer>
+  </main>
+
+  <style>
+    :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{background:#f6f7fb;color:#222;margin:0;padding:20px;}
+    .container{max-width:900px;margin:0 auto;background:#fff;border-radius:8px;padding:18px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+    h1{margin:0 0 10px;font-size:20px}
+    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .controls label{display:flex;flex-direction:column;font-size:13px}
+    .controls input[type="text"], .controls input[type="number"], .controls select{padding:6px 8px;border:1px solid #ddd;border-radius:6px}
+    .buttons{display:flex;gap:8px;margin-top:8px}
+    button{padding:8px 12px;border-radius:8px;border:0;background:#3b82f6;color:white;cursor:pointer}
+    button#clearBtn{background:#ef4444}
+    .preview{margin-top:18px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+    svg{border:1px dashed #e5e7eb;padding:8px;background:#fff}
+    .help{margin-top:12px;font-size:12px;color:#555}
+    @media (max-width:600px){.controls{flex-direction:column;align-items:stretch}}
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+  <script>
+    const svg = document.getElementById('barcode');
+    const textInput = document.getElementById('textInput');
+    const generateBtn = document.getElementById('generateBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const formatSelect = document.getElementById('formatSelect');
+    const widthInput = document.getElementById('widthInput');
+    const heightInput = document.getElementById('heightInput');
+    const displayValueCheckbox = document.getElementById('displayValue');
+    const tmpCanvas = document.getElementById('tmpCanvas');
+
+    function generate() {
+      const value = textInput.value.trim();
+      if(!value){alert('Vui lòng nhập dữ liệu cho mã vạch');return;}
+      const options = {
+        format: formatSelect.value,
+        lineColor: '#000',
+        width: Number(widthInput.value)||2,
+        height: Number(heightInput.value)||100,
+        displayValue: displayValueCheckbox.checked,
+        fontOptions: 'bold',
+        margin: 10
+      };
+      try{JsBarcode(svg,value,options);}catch(e){alert('Không thể tạo mã: '+e.message);}
+    }
+
+    function downloadHighResPNG(){
+      const serializer = new XMLSerializer();
+      const svgStr = serializer.serializeToString(svg);
+      const blob = new Blob([svgStr],{type:'image/svg+xml;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+
+      const img = new Image();
+      img.onload = function(){
+        const targetWidth = 2000;
+        const scale = targetWidth / img.width;
+        tmpCanvas.width = targetWidth;
+        tmpCanvas.height = img.height * scale;
+        const ctx = tmpCanvas.getContext('2d');
+        ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,tmpCanvas.width,tmpCanvas.height);
+        ctx.scale(scale,scale);
+        ctx.drawImage(img,0,0);
+        ctx.setTransform(1,0,0,1,0,0);
+        URL.revokeObjectURL(url);
+        tmpCanvas.toBlob(function(pngBlob){
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(pngBlob);
+          a.download='barcode_2000px.png';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        },'image/png');
+      };
+      img.onerror=function(){alert('Không thể chuyển SVG sang PNG trên trình duyệt này.');};
+      img.src=url;
+    }
+
+    generateBtn.addEventListener('click',generate);
+    downloadBtn.addEventListener('click',downloadHighResPNG);
+    clearBtn.addEventListener('click',()=>{svg.innerHTML='';textInput.value='';});
+
+    textInput.value='123456789012';
+    generate();
+  </script>
+</body>
+</html>

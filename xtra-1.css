@@ -1,0 +1,58 @@
+/* Ẩn mật khẩu giống type="password" */
+.password-toggle {
+  -webkit-text-security: circle; /* Chrome, Safari */
+  text-security: circle;         /* Firefox (experimental) */
+}
+
+
+/*Menu-mini*/
+#menu-mini {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  width: 180px;
+  background: #fff;
+  border: 2px solid #666;
+  border-radius: 12px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  z-index: 5;
+  font-size: 0.8125em;
+  touch-action: none; /* Ngăn trình duyệt cuộn khi kéo */
+}
+
+#di-chuyen-menu {
+  height: 25px;
+  background: #444;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  line-height: 25px;
+  cursor: grab;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  user-select: none;
+}
+
+#menu-mini button {
+  margin: 0.09375em 0px;
+  height: 20px;
+  width: 100%;
+}
+
+
+/*input*/
+#inz-opt {
+  margin: 0.09375em 0px;
+  width: 100%;
+  border: 2px solid black;
+  background: pink;
+  height: 20px;
+}
+
+#inz-opt::placeholder {
+  /* Chữ đậm */
+  color: black;           /* Màu chữ rõ ràng */
+  text-align: center;    /* Căn giữa */
+}

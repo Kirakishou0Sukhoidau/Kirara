@@ -1,0 +1,95 @@
+.p-bq {
+  display: none;
+}
+
+/*PHẦN TÌM ẢNH*/
+/* Form bao ngoài */
+#tim-anh-r34 {
+  width: 100%;
+  display: flex;
+  align-items: center;     /* Căn giữa theo chiều dọc */
+  justify-content: flex-start; /* Căn từ trái sang phải */
+  gap: 10px;               /* Khoảng cách giữa các phần tử */
+  flex-wrap: nowrap;       /* Không xuống hàng */
+  margin: 10px 0;
+}
+
+/* Input */
+#tim-anh-r34 input[type="text"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  flex: 1;                 /* Input co giãn theo không gian */
+  min-width: 10%;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+#tim-anh-r34 input[type="text"]:focus {
+  border-color: #4a90e2;   /* Đổi màu khi focus */
+  outline: none;
+}
+
+/* Nút bấm */
+#tim-anh-r34 button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4a90e2, #357ABD);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+#tim-anh-r34 button:hover {
+  background: linear-gradient(135deg, #5aa0f2, #468ad8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+#tim-anh-r34 button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+
+
+
+/*PHẦN ĐIỀU HƯỚNG TRANG*/
+#nut-ngan-phu {
+  display: flex;
+  align-items: center;          /* Căn giữa theo chiều dọc */
+  justify-content: space-evenly; /* Cách đều các phần tử theo trục X */
+  width: 100%;                  /* Chiếm hết chiều ngang để dàn đều */
+  gap: 10px;                    /* Khoảng cách tối thiểu giữa các phần tử */
+}
+
+#nut-ngan-phu #select-page {
+  width: 100px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#nut-ngan-phu button {
+  padding: 6px 12px;
+  border: none;
+  background: #f3f3f3;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.3s;
+}
+
+#nut-ngan-phu button:hover {
+  background: #e0e0e0;
+}

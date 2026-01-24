@@ -1,0 +1,124 @@
+/*Đo tốc độ mạng*/
+
+#do-mang {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(to right, #f3f4f6, #e5e7eb);
+  color: #1f2937;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Tiêu đề chính */
+#do-mang h1 {
+  font-size: 2rem;
+  color: #111827;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Container chứa tất cả server */
+#do-mang #serversContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Từng server */
+#do-mang .server-container {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+#do-mang .server-container:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Tiêu đề server */
+#do-mang .server-container h2 {
+  font-size: 1.25rem;
+  color: #374151;
+  margin-bottom: 15px;
+}
+
+/* Nút Start */
+#do-mang [id^="SpeedTest-btn-start-"] {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #22c55e; /* xanh lá */
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+}
+#do-mang [id^="SpeedTest-btn-start-"]:hover {
+  background-color: #16a34a;
+}
+#do-mang [id^="SpeedTest-btn-start-"]:active {
+  transform: scale(0.96);
+}
+
+/* Nút Stop */
+#do-mang [id^="SpeedTest-btn-stop-"] {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #ef4444; /* đỏ */
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+}
+#do-mang [id^="SpeedTest-btn-stop-"]:hover {
+  background-color: #dc2626;
+}
+[id^="SpeedTest-btn-stop-"]:active {
+  transform: scale(0.96);
+}
+
+/* Nút Download */
+#do-mang [id^="SpeedTest-btn-download-"] {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #3b82f6; /* xanh dương */
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+}
+#do-mang [id^="SpeedTest-btn-download-"]:hover {
+  background-color: #2563eb;
+}
+#do-mang [id^="SpeedTest-btn-download-"]:active {
+  transform: scale(0.96);
+}
+
+/* Trạng thái */
+#do-mang [id^="SpeedTest-status-"] {
+  margin-top: 12px;
+  font-weight: bold;
+  color: #111827;
+  white-space: pre-line;
+  background-color: #f9fafb;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+
+

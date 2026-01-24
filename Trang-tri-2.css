@@ -1,0 +1,340 @@
+/*Thông số tải trang*/
+#p-pt-l, #p-sh-web, #t-opt {
+    display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+/*Đo tốc độ mạng*/
+
+#do-mang {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(to right, #f3f4f6, #e5e7eb);
+  color: #1f2937;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Tiêu đề chính */
+#do-mang h1 {
+  font-size: 2rem;
+  color: #111827;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Container chứa tất cả server */
+#do-mang #serversContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Từng server */
+#do-mang .server-container {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+#do-mang .server-container:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Tiêu đề server */
+#do-mang .server-container h2 {
+  font-size: 1.25rem;
+  color: #374151;
+  margin-bottom: 15px;
+}
+
+/* Nút Start */
+#do-mang [id^="SpeedTest-btn-start-"] {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #22c55e; /* xanh lá */
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+}
+#do-mang [id^="SpeedTest-btn-start-"]:hover {
+  background-color: #16a34a;
+}
+#do-mang [id^="SpeedTest-btn-start-"]:active {
+  transform: scale(0.96);
+}
+
+/* Nút Stop */
+#do-mang [id^="SpeedTest-btn-stop-"] {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #ef4444; /* đỏ */
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+}
+#do-mang [id^="SpeedTest-btn-stop-"]:hover {
+  background-color: #dc2626;
+}
+[id^="SpeedTest-btn-stop-"]:active {
+  transform: scale(0.96);
+}
+
+/* Nút Download */
+#do-mang [id^="SpeedTest-btn-download-"] {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #3b82f6; /* xanh dương */
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+}
+
+#do-mang [id^="SpeedTest-btn-download-"]:hover {
+  background-color: #2563eb;
+}
+
+#do-mang [id^="SpeedTest-btn-download-"]:active {
+  transform: scale(0.96);
+}
+
+/* Trạng thái */
+#do-mang [id^="SpeedTest-status-"] {
+  margin-top: 12px;
+  font-weight: bold;
+  color: #111827;
+  white-space: pre-line;
+  background-color: #f9fafb;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+
+/*Copy*/
+.moi-truong-copy input, .moi-truong-copy textarea {
+  padding: 2px;
+  font-weight: lighter;
+  color: black;
+  height: max-content;
+}
+
+    .moi-truong-copy {
+      color: black;
+       padding: 5px;
+        overflow-x: hidden;
+        background-color: #87CEEB;
+    }
+    
+        .moi-truong-copy ul li {
+        margin-top: 20px;
+    }
+    
+      .moi-truong-copy .copy-box {
+            border: 2px solid black;
+            padding: 30px 10px 10px 10px;
+            width: 100%;
+            font-weight: bold;
+            background: #87CEEB;
+            margin-bottom: 20px auto;
+            display: inline-block;
+           }
+  
+      .moi-truong-copy .copy-box input {
+            border: 1px solid #ccc;
+            padding: 5px;
+            width: 50px;
+            background: white;
+        }
+ 
+  .moi-truong-copy select {
+    background: orange;
+    border: 1px solid black;
+    margin: 0px;
+    width: max-content;
+      max-width: 100%;
+      text-overflow: ellipsis;
+  }
+  
+    .moi-truong-copy select option {
+    background: blue;
+    border: 1px solid black;
+    margin: 0px;
+  }
+
+
+/*Gemini_AI*/
+/* Container chính - Lâu đài của Lucilla */
+#Chat_Gemini {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #121212;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    
+    user-select: auto;
+    margin-top: 5px;
+    
+}
+
+/* Nhóm nhập liệu */
+#Chat_Gemini .input-group_Chat_GeminiAI {
+    display: flex;
+    width: 100%;  /* Đảm bảo khung bao phủ hết chiều ngang */
+    gap: 5px;
+}
+
+
+/* Khung hiển thị cuộc trò chuyện */
+#Chat_Gemini #khung_hien_thi_Chat_GeminiAI {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #4b0082;
+    margin: 10px 0;
+    padding: 10px;
+    background: #000;
+    color: #fff;
+}
+
+#Chat_Gemini #phan_chat_Gemini {
+    display: flex;
+    gap: 3px;
+}
+
+/* Các thành phần nhập liệu (Input & Textarea) */
+#Chat_Gemini input, 
+#Chat_Gemini textarea {
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+    flex: 1;
+    font-family: inherit;
+}
+
+#Chat_Gemini input {
+    width: 20%;
+}
+
+#Chat_Gemini select {
+    flex: 1;
+}
+
+/* Các nút bấm quyền năng */
+#Chat_Gemini button {
+    background: #4b0082;
+    color: white;
+    border: none;
+    width: max-content;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: opacity 0.2s;
+}
+
+#Chat_Gemini button:hover {
+    opacity: 0.8;
+}
+
+/* Định dạng cho nội dung Markdown (Bảng, code, danh sách) */
+#Chat_Gemini .markdown-content {
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+#Chat_Gemini .markdown-content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 15px;
+    border: 1px solid #444;
+}
+
+#Chat_Gemini .markdown-content th, .markdown-content td {
+    border: 1px solid #444;
+    padding: 8px;
+    text-align: left;
+}
+
+#Chat_Gemini .markdown-content th {
+    background-color: #38006b;
+    color: #d199ff;
+}
+
+#Chat_Gemini .markdown-content code {
+    background: #2a004d;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+#Chat_Gemini .markdown-content pre {
+    background: #1a0033;
+    padding: 10px;
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #38006b;
+}
+
+
+/*Logs*/
+/* Style khung logs */
+#console {
+  background: black;
+  color: #fff;
+  font-family: monospace;
+  font-size: 14px;
+  padding: 10px;
+  height: 200px;
+  overflow-y: auto;
+  border-radius: 8px;
+  ;
+  white-space: normal;
+  word-wrap: break-word; 
+  width: 100%;
+}
+
+/* Các loại log */
+.log {
+  color: pink; /* log thường */
+}
+.warn {
+  color: yellow; /* cảnh báo */
+}
+.error {
+  color: red; /* lỗi nặng */
+}
+.info {
+  color: deepskyblue; /* lỗi nhẹ */
+}
+
+#console div.log,
+#console div.info,
+#console div.warn,
+#console div.error {
+    margin-bottom: 10px; /* khoảng cách giữa các log */
+}
+
