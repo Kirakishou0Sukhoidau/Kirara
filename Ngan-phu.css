@@ -114,6 +114,83 @@
 #select-page {
     width: 3.125em;
 }
+
+/*Nút*/
+#previousH {
+    display: flex;
+    align-items: center;      /* căn giữa theo trục dọc */
+    justify-content: center;  /* căn giữa theo trục ngang */
+
+    width: auto;              /* tuỳ chỉnh */
+    height: 30px;
+
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+#previousH img {
+    display: block;
+    width: auto;              /* tuỳ chỉnh */
+    height: 24px;
+}
+
+#nextsH {
+    display: flex;
+    align-items: center;      /* căn giữa theo trục dọc */
+    justify-content: center;  /* căn giữa theo trục ngang */
+    width: auto;              /* tuỳ chỉnh */
+    height: 30px;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+#nextsH img {
+    display: block;
+    width: auto;              /* tuỳ chỉnh */
+    height: 24px;
+}
+
+.resetnp {
+  
+}
+
+.resetnp2 {
+    display: flex;
+    align-items: center;      /* căn giữa theo trục dọc */
+    justify-content: center;  /* căn giữa theo trục ngang */
+    width: auto;              /* tuỳ chỉnh */
+    height: 30px;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.resetnp2 img {
+    display: block;
+    width: auto;              /* tuỳ chỉnh */
+    height: 24px;
+}
+
+#nextsH {
+    display: flex;
+    align-items: center;      /* căn giữa theo trục dọc */
+    justify-content: center;  /* căn giữa theo trục ngang */
+    width: auto;              /* tuỳ chỉnh */
+    height: 30px;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+#nextsH img {
+    display: block;
+    width: auto;              /* tuỳ chỉnh */
+    height: 24px;
+}
+
+
  
   .ul-bq {
      background-image: url('/storage/emulated/0/Download/Victorique.de.Blois.full.551392.jpg'); 
@@ -153,11 +230,24 @@
   align-items: center;          /* Căn giữa theo chiều dọc */
   justify-content: space-evenly; /* Cách đều các phần tử theo trục X */
   width: 100%;                  /* Chiếm hết chiều ngang để dàn đều */
-  gap: 10px;                    /* Khoảng cách tối thiểu giữa các phần tử */
+  gap: 5px;                    /* Khoảng cách tối thiểu giữa các phần tử */
+}
+
+#nut-ngan-phu form {
+  display: flex;
+  align-items: center;          /* Căn giữa theo chiều dọc */
+  justify-content: space-evenly; /* Cách đều các phần tử theo trục X */
+  width: 100%;                  /* Chiếm hết chiều ngang để dàn đều */
+  gap: 2px;                    /* Khoảng cách tối thiểu giữa các phần tử */
+}
+
+#nut-ngan-phu form * {
+  flex: 1;
+  width: 0px;
 }
 
 #nut-ngan-phu #select-page {
-  width: 100px;
+  width: 1000px;
   padding: 5px;
   text-align: center;
   border: 1px solid #ccc;

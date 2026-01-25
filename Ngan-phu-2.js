@@ -8,10 +8,10 @@ let api2R34 = localStorage.getItem("api2R34") || "";
 document.getElementById("api-r34-1").value = api1R34;
 document.getElementById("api-r34-2").value = api2R34;
 
-function layAnh() {
+function layAnhR34() {
     const khuXemAnh = document.getElementById("khu-xem-anh");
-    const tag = document.getElementById("tag-input").value.trim();
-    document.getElementById("select-page").value = currentPage;
+    const tag = document.getElementById("tag-inputH").value.trim();
+    document.getElementById("select-pageH").value = currentPage;
 
     // Lấy API Key và User ID mới nhất từ localStorage
     api1R34 = localStorage.getItem("api1R34") || "";
@@ -119,11 +119,11 @@ function lazyLoadImagesHent() {
 function capNhatTrangMoi(pid) {
     currentPage = pid;
     localStorage.setItem("currentPage", currentPage);
-    layAnh();
+    layAnhR34();
 }
 
 // Tìm ảnh mới + lưu API Key & User ID
-function timAnhMoi() {
+function timAnhMoiR34() {
     currentPage = 0;
 
     // Lưu API Key và User ID từ input
@@ -134,24 +134,24 @@ function timAnhMoi() {
     localStorage.setItem("api2R34", newApi2);
     localStorage.setItem("currentPage", currentPage);
 
-    layAnh();
+    layAnhR34();
 }
 
 // Xử lý nút Previous
-document.getElementById("previous").addEventListener("click", function () {
+document.getElementById("previousH").addEventListener("click", function () {
     if (currentPage > 0) {
         capNhatTrangMoi(currentPage - 1);
     }
 });
 
 // Xử lý nút Next
-document.getElementById("nexts").addEventListener("click", function () {
+document.getElementById("nextsH").addEventListener("click", function () {
     capNhatTrangMoi(currentPage + 1);
 });
 
 // Xử lý nhập số trang và nhấn "Tới"
-document.getElementById("skip-pages").addEventListener("click", function () {
-    let pageInput = parseInt(document.getElementById("select-page").value);
+document.getElementById("skip-pagesH").addEventListener("click", function () {
+    let pageInput = parseInt(document.getElementById("select-pageH").value);
     if (!isNaN(pageInput) && pageInput >= 0) {
         capNhatTrangMoi(pageInput);
     } else {
@@ -160,18 +160,18 @@ document.getElementById("skip-pages").addEventListener("click", function () {
 });
 
 // Gọi ảnh ban đầu khi load trang
-layAnh();
+layAnhR34();
 
 // Xử lý khi nhấn Enter ở tag-input
-document.getElementById("tag-input").addEventListener("keydown", function(event) {
+document.getElementById("tag-inputH").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
         event.preventDefault();
-        timAnhMoi();
+        timAnhMoiR34();
     }
 });
 
 // Xử lý khi nhấn Enter ở select-page
-document.getElementById("select-page").addEventListener("keydown", function(event) {
+document.getElementById("select-pageH").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
         event.preventDefault();
         let pageInput = parseInt(this.value);
@@ -187,8 +187,8 @@ document.getElementById("select-page").addEventListener("keydown", function(even
 
 
 //Tag-goi-y
-const searchR34 = document.getElementById("tag-input");
-const autocompR34 = document.getElementById("suggestions");
+const searchR34 = document.getElementById("tag-inputH");
+const autocompR34 = document.getElementById("suggestionsH");
 
 // Hàm fetch dữ liệu từ API
 async function fetchsugR34(query) {
@@ -252,7 +252,7 @@ const resettkButtonnp = document.querySelector(".resetnp");
 
 resettkButtonnp.addEventListener("click", function(event) {
   event.preventDefault(); // Ngăn hành vi mặc định  const inputrsElementtk2 = document.querySelector("#form-quet #input-quet");
-      const inputrsElementtknp = document.querySelector("#tag-input");
+      const inputrsElementtknp = document.querySelector("#tag-inputH");
   inputrsElementtknp.value = "";
 });
 
@@ -261,7 +261,7 @@ const resettkButtonnp2 = document.querySelector(".resetnp2");
 
 resettkButtonnp2.addEventListener("click", function(event) {
   event.preventDefault(); // Ngăn hành vi mặc định  const inputrsElementtk2 = document.querySelector("#form-quet #input-quet");
-      const inputrsElementtknp2 = document.querySelector("#select-page");
+      const inputrsElementtknp2 = document.querySelector("#select-pageH");
   inputrsElementtknp2.value = "0";
 });
 

@@ -2,6 +2,7 @@ User-Agent: *
 Disallow: /
 
 Disallow: /asset/
+Disallow: /asset/cache/
 Disallow: /image/
 Disallow: /logo/
 Disallow: /Home/
@@ -23,15 +24,19 @@ Disallow: /xtracss/
 Disallow: /trang-chu/Home.css
 Disallow: /trang-chu/Home.js
 
+Disallow: /index.html
+
 # Disallow: *.json
 # Disallow: *.js
 Disallow: *.css
 Disallow: *.bin
 Disallow: *.data
 Disallow: *.dll
-Disallow: *.png
-Disallow: *.jpg
-Disallow: *.jpeg
+Disallow: *.html
+Disallow: *.txt
+# Disallow: *.png
+# Disallow: *.jpg
+# Disallow: *.jpeg
 
 
 
