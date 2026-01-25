@@ -96,7 +96,7 @@
 }
 
         /* CSS cho danh sách gợi ý */
-        #suggestions {
+        #suggestionsH {
             border: 1px solid black;
             max-height: 150px;
             overflow-y: auto;
@@ -106,7 +106,7 @@
           display: none;
         }
 
-        #suggestions div {
+        #suggestionsH div {
             padding: 8px;
             cursor: pointer;
         }
