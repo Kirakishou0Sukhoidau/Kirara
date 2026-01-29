@@ -90,8 +90,6 @@ window.addEventListener('touchstart', cancelRedirect);
 
 
 
-
-
 //toan-man-hinh
 const fullScreenButton1 = document.getElementById('thu-phong');
 const fullScreenButton2 = document.getElementById("dongy"); // Thêm nút thứ hai
@@ -254,7 +252,7 @@ var khongdongy = document.getElementById("khongdongy");
 
 dongy.onclick = function () {
     var expires = new Date();
-    expires.setFullYear(2026); // Gia hạn đến năm 2026
+    expires.setFullYear(2027); // Gia hạn đến năm 2026
     document.cookie = "dongy=true; expires=" + expires.toUTCString() + "; path=/";
     
     thongbao.style.display = "none";
@@ -1241,7 +1239,8 @@ thembordermtl.addEventListener('click', function() {
 
 
 //url
-/*const inputURL = document.getElementById('input-link');
+/*
+ const inputURL = document.getElementById('input-link');
 const searchEngineLinkSelect = document.getElementById('search-engine-link');
 const submitButton = document.getElementById('button-link');
 
@@ -1266,6 +1265,7 @@ submitButton.addEventListener('click', function(event) {
   }
 });
 */
+
 /*
 const hienBgt = document.getElementById('hien-chu');
 
